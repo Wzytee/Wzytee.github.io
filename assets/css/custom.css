@@ -1,0 +1,397 @@
+/*--------------------------------------------------------------
+# Palette: stock blue, nudged toward violet
+  (same variable names as main.css, so everything follows)
+--------------------------------------------------------------*/
+:root {
+  --background-color: #0f1423;
+  --default-color: #e8ecfa;
+  --heading-color: #ffffff;
+  --accent-color: #6280ee;
+  --surface-color: #161d33;
+  --contrast-color: #ffffff;
+
+  --nav-hover-color: #8fa6f6;
+  --nav-mobile-background-color: #252e52;
+  --nav-dropdown-background-color: #0a0e1b;
+  --nav-dropdown-hover-color: #8fa6f6;
+
+  /* extra tokens used only in this file */
+  --accent-2: #8b7cf6;            /* violet partner for gradients */
+  --radius: 16px;                 /* one roundness for all blocks */
+  --shadow-soft: 0 8px 24px rgba(4, 7, 18, 0.35);
+  --shadow-lift: 0 14px 34px color-mix(in srgb, var(--accent-color), transparent 72%);
+}
+
+.light-background {
+  --background-color: #151b30;
+  --surface-color: #2a3358;
+}
+
+/*--------------------------------------------------------------
+# 2. Typography
+--------------------------------------------------------------*/
+
+/* 2a. Font family (main.css reads these variables) */
+:root {
+  --default-font: "Nunito", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --heading-font: "Merriweather", Georgia, serif;
+}
+
+/* 2b. Headings */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: var(--heading-color);
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--accent-color), #fff 55%);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--heading-color);
+}
+
+h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: color-mix(in srgb, var(--accent-color), #fff 35%);
+}
+
+h5 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--accent-color), #fff 35%);
+}
+
+h6 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.section-title h2 {
+  font-size: 2.9rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--heading-color);
+}
+
+/* short gradient bar under section titles */
+.section-title h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin: 1rem auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-2));
+}
+
+/* 2c. Paragraphs */
+p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  color: color-mix(in srgb, var(--default-color), transparent 12%);
+}
+
+/*--------------------------------------------------------------
+# 3. Buttons and links
+--------------------------------------------------------------*/
+
+/* 3a. Buttons (+ :hover, :active) */
+.btn,
+.btn-primary,
+.btn-view-project,
+.btn-next-project,
+.cta-group .btn-ghost {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-2));
+  color: var(--contrast-color);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.25s ease;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-view-project:hover,
+.btn-next-project:hover,
+.cta-group .btn-ghost:hover {
+  background: transparent;
+  color: color-mix(in srgb, var(--accent-color), #fff 40%);
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-3px);
+}
+
+.btn:active,
+.btn-primary:active,
+.btn-view-project:active,
+.btn-next-project:active,
+.cta-group .btn-ghost:active {
+  background: color-mix(in srgb, var(--accent-color), #000 30%);
+  color: var(--contrast-color);
+  border-color: color-mix(in srgb, var(--accent-color), #000 30%);
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+/* 3b. Links */
+a {
+  color: color-mix(in srgb, var(--accent-color), #fff 35%);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  transition: all 0.25s ease;
+}
+
+a:hover {
+  color: var(--nav-hover-color);
+  text-decoration-color: var(--accent-2);
+}
+
+a:active {
+  color: var(--contrast-color);
+  text-decoration-color: var(--contrast-color);
+}
+
+/*--------------------------------------------------------------
+# 4. Layout: margin / padding / block styling
+--------------------------------------------------------------*/
+
+/* 4a. Spacing in About, Resume, Portfolio */
+section.about {
+  padding: 90px 0;
+}
+
+section.resume {
+  padding: 80px 0;
+}
+
+section.resume .resume-item {
+  margin-bottom: 3.5rem;
+}
+
+section.portfolio {
+  padding: 90px 0 70px;
+}
+
+section.portfolio .portfolio-card {
+  margin-bottom: 36px;
+}
+
+.section-title {
+  padding-bottom: 40px;
+}
+
+@media (max-width: 767.98px) {
+  section.about,
+  section.resume,
+  section.portfolio {
+    padding: 60px 0;
+  }
+}
+
+/* 4b. Content blocks: border, radius, shadow
+   (same border recipe main.css uses for .skill-item) */
+.about .skill-item,
+.skills .skill-box,
+.services .service-item,
+.portfolio .portfolio-card {
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.skills .skill-box:hover,
+.portfolio .portfolio-card:hover,
+.services .service-item:hover {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+  box-shadow: var(--shadow-lift);
+}
+
+/* resume: keep main.css timeline line + dots, restyle the entries */
+.resume .resume-item article {
+  background: color-mix(in srgb, var(--surface-color), transparent 40%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+/*--------------------------------------------------------------
+# 5. Two restyled components (appearance only)
+   (1) Header / navigation bar   (2) Progress bars
+--------------------------------------------------------------*/
+
+/* 5-1. Header: works with main.css's scroll behavior */
+.header,
+.scrolled .header {
+  --background-color: rgba(10, 14, 27, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px 0;
+  border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 55%);
+  box-shadow: 0 6px 20px rgba(4, 7, 18, 0.45);
+}
+
+/* 5-2. Progress bars: keeps main.css width animation untouched */
+.progress {
+  height: 14px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 60%);
+  border-radius: 6px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.45);
+}
+
+.progress .progress-bar {
+  background-image: linear-gradient(90deg, var(--accent-color), var(--accent-2)) !important;
+  border-radius: 6px;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-color), transparent 55%);
+}
+/*--------------------------------------------------------------
+# Sąrašų stiliai (services.html)
+--------------------------------------------------------------*/
+
+/* 1a. Nenumeruotas sąrašas: pseudo-elementas ::before vietoj taškelių */
+.services .service-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.services .service-content ul > li {
+  position: relative;
+  padding: 0.4rem 0 0.4rem 1.8rem;
+}
+
+.services .service-content ul > li::before {
+  content: "\F285"; /* Bootstrap Icons: chevron-right */
+  font-family: "bootstrap-icons";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  color: var(--accent-2);
+  font-size: 0.9rem;
+  transition: transform 0.25s ease;
+}
+
+.services .service-content ul > li:hover::before {
+  transform: translateX(4px);
+}
+
+/* 1a. Numeruotas sąrašas: CSS skaitikliai (counters) */
+.services .service-content ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  counter-reset: etapai;
+}
+
+.services .service-content ol > li {
+  counter-increment: etapai;
+  position: relative;
+  padding: 0.5rem 0 0.5rem 3rem;
+}
+
+.services .service-content ol > li::before {
+  content: counter(etapai);
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-2));
+  color: var(--contrast-color);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* 1b. Įdėtinis sąrašas: kitoks nei pagrindinis */
+.services .service-content ul ul {
+  margin: 0.4rem 0 0.2rem 0.2rem;
+  padding-left: 0.5rem;
+  border-left: 2px dashed color-mix(in srgb, var(--accent-color), transparent 50%);
+}
+
+.services .service-content ul ul > li {
+  padding: 0.2rem 0 0.2rem 1.4rem;
+  font-size: 0.92rem;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+.services .service-content ul ul > li::before {
+  content: "\F287"; /* Bootstrap Icons: dot */
+  top: 0.15rem;
+  font-size: 1.1rem;
+  color: color-mix(in srgb, var(--accent-color), #fff 30%);
+}
+
+/*--------------------------------------------------------------
+# Lentelės stiliai (services.html)
+--------------------------------------------------------------*/
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* 2a. Antraštinė eilutė: išsiskiria iš duomenų */
+.services-table thead th {
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-2));
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 3px solid var(--accent-2);
+}
+
+/* 2c. Vienodi vidiniai tarpai ir turinio lygiavimas centre */
+.services-table th,
+.services-table td {
+  padding: 1rem 1.25rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 2b. „Zebra“ stilius */
+.services-table tbody tr:nth-child(odd) {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+}
+
+.services-table tbody tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--surface-color), #000 20%);
+}
+
+/* 2b. Eilutės :hover efektas */
+.services-table tbody tr {
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.services-table tbody tr:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 75%);
+  transform: scale(1.01);
+}
